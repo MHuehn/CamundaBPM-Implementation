@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn.xsd" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/1.0" id="Kundenbindungsprozess-3" name="DRD" namespace="http://camunda.org/schema/1.0/dmn">
+  <decision id="stabilitaetID" name="Stabilitaet">
+    <extensionElements>
+      <biodi:bounds x="385" y="224" width="180" height="80" />
+      <biodi:edge source="InputData_05qy0hd">
+        <biodi:waypoints x="418" y="348" />
+        <biodi:waypoints x="448" y="304" />
+      </biodi:edge>
+      <biodi:edge source="InputData_04gm5ij">
+        <biodi:waypoints x="539" y="349" />
+        <biodi:waypoints x="520" y="304" />
+      </biodi:edge>
+      <biodi:edge source="InputData_0b95kbt">
+        <biodi:waypoints x="620" y="271" />
+        <biodi:waypoints x="565" y="270" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredInput href="#InputData_05qy0hd" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#InputData_04gm5ij" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#InputData_0b95kbt" />
+    </informationRequirement>
+    <decisionTable id="decisionTable_1">
+      <input id="input_1" label="Mitarbeiter">
+        <inputExpression id="inputExpression_1" typeRef="integer">
+          <text>mitarbeiter</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0a48vnm" label="Umsatz">
+        <inputExpression id="LiteralExpression_1ldh2dv" typeRef="integer">
+          <text>umsatz</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_12v2no3" label="Gründungsdatum">
+        <inputExpression id="LiteralExpression_1al3mg0" typeRef="date">
+          <text>gruendungsdatum</text>
+        </inputExpression>
+      </input>
+      <output id="output_1" label="Stabilität" name="stabilitaet" typeRef="string">
+        <outputValues id="UnaryTests_03brevn">
+          <text>"niedrig","mittel","hoch"</text>
+        </outputValues>
+      </output>
+      <rule id="DecisionRule_1upbb1v">
+        <inputEntry id="UnaryTests_1gmaa4d">
+          <text>&lt; 50</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1qc01uq">
+          <text>&lt; 100000</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0jsxfum">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1d7v3hp">
+          <text>"mittel"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_07q7g87">
+        <inputEntry id="UnaryTests_1ii5t1a">
+          <text>&lt; 50</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0eygoay">
+          <text>[100000..1000000]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_09dlqcg">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_06zdap2">
+          <text>"hoch"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_00l28i7">
+        <inputEntry id="UnaryTests_0kgxsnm">
+          <text>&lt; 50</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1d6yy3f">
+          <text>&gt; 1000000</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0iuxdud">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0o6dxqp">
+          <text>"hoch"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0oe0bi7">
+        <inputEntry id="UnaryTests_0zaielu">
+          <text>[50..500]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0gzndbd">
+          <text>&lt; 100000</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_15v52zp">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_06mccky">
+          <text>"niedrig"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1nbafo8">
+        <inputEntry id="UnaryTests_0gle67d">
+          <text>[50..500]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_07vu8ii">
+          <text>[100000..1000000]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_09way15">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_09v7pqa">
+          <text>"mittel"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1mxak6t">
+        <inputEntry id="UnaryTests_04jyhjn">
+          <text>[50..500]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0pf6f16">
+          <text>&gt; 1000000</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ewr84j">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0lhwvai">
+          <text>"hoch"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0zqxqpl">
+        <inputEntry id="UnaryTests_0wel9uh">
+          <text>&gt; 500</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1llsi0l">
+          <text>&lt; 100000</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1itjd24">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_04pbsfh">
+          <text>"niedrig"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_00edpy1">
+        <inputEntry id="UnaryTests_1m2ogjj">
+          <text>&gt; 500</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1y51fhz">
+          <text>[100000..1000000]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1wjqtsx">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1czzkx4">
+          <text>"niedrig"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_09y5uu1">
+        <inputEntry id="UnaryTests_0mbqj0l">
+          <text>&gt; 500</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1x0faju">
+          <text>&gt; 1000000</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1nj0wu4">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1p54ynv">
+          <text>"hoch"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0aaapyf">
+        <inputEntry id="UnaryTests_0y267x6">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1c38wjh">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1almwpy">
+          <text>&gt; date and time("2017-01-01T00:00:00")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1hrwufi">
+          <text>"niedrig"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData id="InputData_05qy0hd" name="Mitarbeiter">
+    <extensionElements>
+      <biodi:bounds x="339" y="348" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <inputData id="InputData_04gm5ij" name="Jahresumsatz">
+    <extensionElements>
+      <biodi:bounds x="485" y="349" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <inputData id="InputData_0b95kbt" name="Bestehen">
+    <extensionElements>
+      <biodi:bounds x="620" y="249" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <decision id="potenzialID" name="Potenzial">
+    <extensionElements>
+      <biodi:bounds x="386" y="115" width="180" height="80" />
+      <biodi:edge source="stabilitaetID">
+        <biodi:waypoints x="474" y="224" />
+        <biodi:waypoints x="473" y="195" />
+      </biodi:edge>
+      <biodi:edge source="InputData_1ndjv15">
+        <biodi:waypoints x="348" y="154" />
+        <biodi:waypoints x="386" y="155" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredDecision href="#stabilitaetID" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#InputData_1ndjv15" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_0nldivm">
+      <input id="InputClause_1v2bwyd" label="Stabilität">
+        <inputExpression id="LiteralExpression_1l3bjg4" typeRef="string">
+          <text>stabilitaet</text>
+        </inputExpression>
+        <inputValues id="UnaryTests_1d61z32">
+          <text>"niedrig","mittel","hoch"</text>
+        </inputValues>
+      </input>
+      <input id="InputClause_133zxok" label="Geschaetzter Umsatz">
+        <inputExpression id="LiteralExpression_12a2c7z" typeRef="integer">
+          <text>schaetzung</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_1jiemqz" label="Potenzial" name="potenzial" typeRef="boolean" />
+      <rule id="DecisionRule_1jq80nc">
+        <inputEntry id="UnaryTests_1spih2l">
+          <text>"niedrig"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0zob6rg">
+          <text>&lt; 10000</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0df90w0">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1lm59wr">
+        <inputEntry id="UnaryTests_150d6mm">
+          <text>"mittel"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0kf8fn8">
+          <text>&lt; 10000</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_053dy3q">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0a1tejb">
+        <inputEntry id="UnaryTests_04mtp0e">
+          <text>"hoch"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1om4mxe">
+          <text>&lt; 10000</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0ujfcro">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1u2vyx9">
+        <inputEntry id="UnaryTests_07gmy95">
+          <text>"niedrig"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1dnxqmg">
+          <text>[10000..50000]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0039zqu">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1esmnr1">
+        <inputEntry id="UnaryTests_032202o">
+          <text>"mittel"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_18poiz9">
+          <text>[10000..50000]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0h69que">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1m7phkz">
+        <inputEntry id="UnaryTests_1h7273h">
+          <text>"hoch"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_06ev8cs">
+          <text>[10000..50000]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ml9mz8">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1ok8zue">
+        <inputEntry id="UnaryTests_128hdym">
+          <text>"niedrig"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1frcinm">
+          <text>&gt; 50000</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1kf23sz">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_120g6h1">
+        <inputEntry id="UnaryTests_1rwyk43">
+          <text>"mittel"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_15p0ncc">
+          <text>&gt; 50000</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1b2eozq">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0rwqazi">
+        <inputEntry id="UnaryTests_04nhs84">
+          <text>"hoch"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_07kfph1">
+          <text>&gt; 50000</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0nlazjw">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <knowledgeSource id="KnowledgeSource_16x7ag6" name="Kundenbeziehung">
+    <extensionElements>
+      <biodi:bounds x="232" y="222" width="100" height="63" />
+      <biodi:edge source="InputData_1ndjv15">
+        <biodi:waypoints x="282" y="175" />
+        <biodi:waypoints x="282" y="222" />
+      </biodi:edge>
+    </extensionElements>
+    <authorityRequirement>
+      <requiredInput href="#InputData_1ndjv15" />
+    </authorityRequirement>
+  </knowledgeSource>
+  <inputData id="InputData_1ndjv15" name="Geschätzter Umsatz">
+    <extensionElements>
+      <biodi:bounds x="223" y="130" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <decision id="rabattID" name="Kundenbindungsrabatt">
+    <extensionElements>
+      <biodi:bounds x="610" y="115" width="180" height="80" />
+      <biodi:edge source="potenzialID">
+        <biodi:waypoints x="566" y="155" />
+        <biodi:waypoints x="610" y="155" />
+      </biodi:edge>
+      <biodi:edge source="BusinessKnowledgeModel_1y3jj9n">
+        <biodi:waypoints x="700" y="80" />
+        <biodi:waypoints x="700" y="115" />
+      </biodi:edge>
+      <biodi:edge source="InputData_0cxmg7t">
+        <biodi:waypoints x="817" y="152" />
+        <biodi:waypoints x="790" y="152" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredDecision href="#potenzialID" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#InputData_0cxmg7t" />
+    </informationRequirement>
+    <knowledgeRequirement>
+      <requiredKnowledge href="#BusinessKnowledgeModel_1y3jj9n" />
+    </knowledgeRequirement>
+    <decisionTable id="DecisionTable_15ebkxt">
+      <input id="InputClause_1w7euey" label="Potenzial">
+        <inputExpression id="LiteralExpression_0l9v0iq" typeRef="boolean">
+          <text>potenzial</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0pbs61e" label="Rabatt gewähren">
+        <inputExpression id="LiteralExpression_167lful" typeRef="boolean">
+          <text>rgewaehren</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_0x5w0fq" label="Kundenbindungsrabatt" name="kundenbindungsrabatt" typeRef="double" />
+      <rule id="DecisionRule_0uyzgrf">
+        <inputEntry id="UnaryTests_03yu4xr">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_133n7xx">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0p6e4s3">
+          <text>0.0</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1iacde2">
+        <inputEntry id="UnaryTests_0ngeq1u">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1iy9rw6">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0x7jtv4">
+          <text>0.0</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1lz4jp0">
+        <inputEntry id="UnaryTests_18cn2mf">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0drx14t">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_034y3jd">
+          <text>5.0</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0k8762e">
+        <inputEntry id="UnaryTests_1qh42db">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0t9trl3">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1jrjpz4">
+          <text>2.5</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <businessKnowledgeModel id="BusinessKnowledgeModel_1y3jj9n" name="Rabattschlüssel">
+    <extensionElements>
+      <biodi:bounds x="632" y="34" width="135" height="46" />
+    </extensionElements>
+  </businessKnowledgeModel>
+  <inputData id="InputData_0cxmg7t" name="Rabatt gewünscht">
+    <extensionElements>
+      <biodi:bounds x="817" y="131" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+</definitions>

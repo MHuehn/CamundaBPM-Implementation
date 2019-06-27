@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions_0mkb9fn" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="2.2.4">
+  <bpmn:process id="Angebotserstellung-4" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>SequenceFlow_1ywko9s</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_1ywko9s" sourceRef="StartEvent_1" targetRef="Task_15aafsb" />
+    <bpmn:sequenceFlow id="SequenceFlow_0aixorp" sourceRef="Task_15aafsb" targetRef="Task_1qxl3qd" />
+    <bpmn:sequenceFlow id="SequenceFlow_0ewf6j5" sourceRef="Task_1qxl3qd" targetRef="Task_0uxzh8m" />
+    <bpmn:endEvent id="EndEvent_0edbtbq">
+      <bpmn:incoming>SequenceFlow_0kerkuq</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_0kerkuq" sourceRef="Task_0uxzh8m" targetRef="EndEvent_0edbtbq" />
+    <bpmn:userTask id="Task_15aafsb" name="Formular ausfüllen" camunda:assignee="demo">
+      <bpmn:extensionElements>
+        <camunda:formData>
+          <camunda:formField id="themenvielfalt" label="Anzahl der involvierten Bereiche?" type="long" defaultValue="7" />
+          <camunda:formField id="komplexitaet" label="Wie hoch ist die Komplexitaet?" type="string" defaultValue="hoch" />
+          <camunda:formField id="deadline" label="Wann ist die Deadline?" type="date" defaultValue="03/08/2019" />
+          <camunda:formField id="entfernung" label="Wie ist die Entfernung zum Kunden?" type="long" defaultValue="100" />
+          <camunda:formField id="ausgelastet" label="Sind Sie Ausgelastet?" type="boolean" defaultValue="false" />
+        </camunda:formData>
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_1ywko9s</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0aixorp</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:businessRuleTask id="Task_1qxl3qd" name="Kalkulation durchführen" camunda:resultVariable="infoList" camunda:decisionRef="InformationslisteID" camunda:mapDecisionResult="singleEntry">
+      <bpmn:incoming>SequenceFlow_0aixorp</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0ewf6j5</bpmn:outgoing>
+    </bpmn:businessRuleTask>
+    <bpmn:userTask id="Task_0uxzh8m" name="Kalkulation prüfen" camunda:assignee="demo">
+      <bpmn:extensionElements>
+        <camunda:formData>
+          <camunda:formField id="stunden" label="Bitte überprüfen Sie die kalkulierte Stundenanzahl!" type="string" />
+          <camunda:formField id="berateranzahl" label="Bitte überprüfen Sie die kalkulierte Berateranzahl!" type="string" />
+          <camunda:formField id="preis" label="Bitte überprüfen Sie den kalkulierten Stundensatz!" type="string" />
+          <camunda:formField id="gesamtPreis" label="Bitte überprüfen Sie den kalkulierten Gesamtpreis!" type="string" />
+        </camunda:formData>
+        <camunda:executionListener event="start">
+          <camunda:script scriptFormat="Javascript">execution.setVariable("stunden", infoList[0]);
+execution.setVariable("berateranzahl", infoList[1]);
+execution.setVariable("preis", infoList[2]);
+execution.setVariable("gesamtPreis", infoList[3]);</camunda:script>
+        </camunda:executionListener>
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_0ewf6j5</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0kerkuq</bpmn:outgoing>
+    </bpmn:userTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Angebotserstellung-4">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="173" y="102" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1ywko9s_di" bpmnElement="SequenceFlow_1ywko9s">
+        <di:waypoint x="209" y="120" />
+        <di:waypoint x="259" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0aixorp_di" bpmnElement="SequenceFlow_0aixorp">
+        <di:waypoint x="359" y="120" />
+        <di:waypoint x="409" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0ewf6j5_di" bpmnElement="SequenceFlow_0ewf6j5">
+        <di:waypoint x="509" y="120" />
+        <di:waypoint x="559" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="EndEvent_0edbtbq_di" bpmnElement="EndEvent_0edbtbq">
+        <dc:Bounds x="709" y="102" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0kerkuq_di" bpmnElement="SequenceFlow_0kerkuq">
+        <di:waypoint x="659" y="120" />
+        <di:waypoint x="709" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="UserTask_0w55n4e_di" bpmnElement="Task_15aafsb">
+        <dc:Bounds x="259" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BusinessRuleTask_1rmmqmz_di" bpmnElement="Task_1qxl3qd">
+        <dc:Bounds x="409" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="UserTask_15f088j_di" bpmnElement="Task_0uxzh8m">
+        <dc:Bounds x="559" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
