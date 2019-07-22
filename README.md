@@ -4,7 +4,7 @@ In dieser Implementierung wird ein Prozess in der Camunda Business Process Engin
 
 ## Prozess
 
-![alt text](https://github.com/MCikus/CamundaBPM-Implementation/blob/master/pictures/Prozess.png?raw=true "BPMN")
+![alt text](https://github.com/MCikus/CamundaBPM-Implementation/blob/master/pictures/Prozess.PNG?raw=true "BPMN")
 
 1. Send Task
 2. Business Rule Task
