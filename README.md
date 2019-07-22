@@ -151,10 +151,14 @@ Das Message Event wird genauso konfiguriert wie die Send Task aus 4. und weißt 
 ### 7. Business Rule Task
 In der Business Rule Task muss im Reiter General in Details für das Feld Implementation DMN ausgewählt werden, im Feld Decision Ref wird die ID der Tabelle eingetragen aus welcher der Output gezogen werden soll. Das Feld Binding wird auf latest gesetzt und im Feld Result Variable wird ebenfalls die ID der Ergebnisstabelle eingetragen. Zuletzt im Feld Map Decision Result wird ausgewählt, welche Art von Ergebnis aufgegriffen wird. In diesem Beispiel wird singleEntry verwendent. 
 
-#### 7.1 DRD 
-Die Business Rule Task verweißt in diesem Prozess auf ein DMN, welches in der CamundaBPM Engine durchgeführt wird. Dabei
+#### 7.1 DMN 
+Die Business Rule Task verweißt in diesem Prozess auf ein DMN, welches in der CamundaBPM Engine durchgeführt wird. Dabei werden in diesem Beispiel zwei DMN Entscheidungen verwendet. Auf ein komplexeres Beispiel in DMN wird unter folgendem Link bereits umfassend eingegangen. 
 
-DRD Bild
+#### 7.1.1 DRD Kalkulation
+![alt text](https://github.com/MCikus/CamundaBPM-Implementation/blob/master/pictures/DMN2.PNG?raw=true "BPMN"
+
+#### 7.1.2 DRD Kundenbindungsprozess
+![alt text](https://github.com/MCikus/CamundaBPM-Implementation/blob/master/pictures/DMN1.png?raw=true "BPMN"
 
 ### 8. Call Activity
 BPMN 2.0 unterscheidet zwischen einem eingebetteten Subprozess und einer Call Activity. Aus theoretischer Sicht rufen beide einen Subprozess auf, wenn die Prozessausführung bei der Aktivität eintrifft.
