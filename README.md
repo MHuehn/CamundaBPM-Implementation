@@ -155,10 +155,10 @@ In der Business Rule Task muss im Reiter General in Details für das Feld Implem
 Die Business Rule Task verweißt in diesem Prozess auf ein DMN, welches in der CamundaBPM Engine durchgeführt wird. Dabei werden in diesem Beispiel zwei DMN Entscheidungen verwendet. Auf ein komplexeres Beispiel in DMN wird unter folgendem Link bereits umfassend eingegangen. 
 
 #### 7.1.1 DRD Kalkulation
-![alt text](https://github.com/MCikus/CamundaBPM-Implementation/blob/master/pictures/DMN2.PNG?raw=true "BPMN"
+![alt text](https://github.com/MCikus/CamundaBPM-Implementation/blob/master/pictures/DMN2.PNG?raw=true "Kalkulation")
 
 #### 7.1.2 DRD Kundenbindungsprozess
-![alt text](https://github.com/MCikus/CamundaBPM-Implementation/blob/master/pictures/DMN1.png?raw=true "BPMN"
+![alt text](https://github.com/MCikus/CamundaBPM-Implementation/blob/master/pictures/DMN1.png?raw=true "Kundenbindungsprozess")
 
 ### 8. Call Activity
 BPMN 2.0 unterscheidet zwischen einem eingebetteten Subprozess und einer Call Activity. Aus theoretischer Sicht rufen beide einen Subprozess auf, wenn die Prozessausführung bei der Aktivität eintrifft.
