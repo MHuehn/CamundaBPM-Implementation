@@ -45,7 +45,7 @@ Um CamundaBPM richtig (Konfiguration und Einstellungen) aufzusetzen werden folge
 Außerdem ist eine Konfigurationsdatei in das Verzeichnis camunda-bpm-tomcat-7.10.0\server\apache-tomcat-9.0.12\conf abzulegen:
 Das folgende Beispiel kann so übernommen und mit einem Texteditor als `mail-config.properties` abgespeichert werden.
 
-```
+```console
 # send mails via SMTP
 mail.transport.protocol=smtp
 
@@ -138,7 +138,7 @@ Reiter Listeners öffnen, Listeners auf "+" klicken. Execution Listener "start".
 
 Message Name in der Receive Task vorher umbenennen auf einen wiederverwendbaren Namen
 
-```
+```javascript
 var service = execution.getProcessEngineServices().getRuntimeService();
 service.createMessageCorrelation("MessageName");
 var id = service.createExecutionQuery().messageEventSubscriptionName("MessageName").singleResult();
@@ -171,7 +171,7 @@ Im Reiter General CallActivity Type BPMN auswählen. Anschließend im Feld Calle
 In diesem Abschnitt wird die Variablenübergabe zwischen dem Subprozess der CallActivity und des aufrufenden Prozesses konfiguriert.
 Es muss folgender Abschnitt in der Klammer eingefügt werden. <bpmn:callActivity id="Task1"...> INSERT HERE </bpmn:callActivity>
 
-```
+```xml
 <bpmn:extensionElements>
 <camunda:out variables="all" />
 <camunda:in variables="all" />
