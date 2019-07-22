@@ -188,9 +188,7 @@ Timer-Ereignisse sind Ereignisse, die von einem definierten Timer ausgelöst wer
 Wird im Modeler nicht besonders implementiert. Triggert sich sobald die Prozessinstanz diesen Zustand erreicht und bricht den gesamten Prozess ab. 
 
 ### 12 Service Task
-Die Serive Task druckt ein Angebot auf der Basis der Variablen die während des Prozessdurchlaufs entstanden sind. 
-
-Ist eine Schnittstelle für einen externen Service, z.B. das Bearbeiten einer Zahlung durch einen Kreditkartenanbieter. Dies wird im folgenden Beispiel durch ein NodeJS-Skript simuliert.
+Die Serive Task druckt ein Angebot auf der Basis der Variablen die während des Prozessdurchlaufs entstanden sind und ist damit eine Schnittstelle für einen externen Service. Dies wird im folgenden Beispiel durch ein NodeJS-Skript simuliert.
 - Benötigte Programme: Camunda Modeler, Texteditor, NodeJS & NPM
 - Ausführliche Erklärung in den Camunda Docs: [klick](https://docs.camunda.org/get-started/quick-start/service-task/#configure-the-service-task)
   - Im Camunda Modeler
@@ -198,7 +196,7 @@ Ist eine Schnittstelle für einen externen Service, z.B. das Bearbeiten einer Za
     - Task auswählen und "Properties Panel" öffnen
     - Im Reiter "General"
       - Implementation auf "External" setzen
-      - Topic festlegen, woran die Task erkannt werden kann (z.B. "karte-belasten")
+      - Topic festlegen, woran die Task erkannt werden kann (z.B. "angebot")
   - Im Terminal/ Eingabeauffoderung
     - [NodeJS & NPM installieren](https://nodejs.org/en/download/)
     - [Arbeitsbereich vorbereiten](https://docs.camunda.org/get-started/quick-start/service-task/#create-a-new-nodejs-project)
@@ -220,4 +218,5 @@ Ist eine Schnittstelle für einen externen Service, z.B. das Bearbeiten einer Za
     - mit "node ./worker.js" das angelegte NodeJS-Skript ausführen
 - Beim Ausführen des BPMN-Prozesses in Camunda BPM wird die Service Task nun von dem angelegten Skript bedient
 
+## Deployen und Starten
 Anschließend wird der Prozess hochgeladen und kann ausgeführt werden. 
